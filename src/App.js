@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   const fetchListings = () => {
-    axios.get('https://agile-vision-production.up.railway.app/')
+    axios.get('https://agile-vision-production.up.railway.app/api/listings')
       .then(res => setListings(res.data))
       .catch(() => alert("Could not fetch listings. Is backend running?"));
   };
@@ -26,7 +26,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://agile-vision-production.up.railway.app/', formData)
+    axios.post('https://agile-vision-production.up.railway.app/api/listings', formData)
       .then(res => {
         setListings(prev => [...prev, res.data]);
         setFormData({ title: '', location: '', address: '', ownerName: '', phone: '' });
