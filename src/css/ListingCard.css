@@ -1,0 +1,140 @@
+.listing-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  transition: transform 0.2s;
+  height: 600px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.4rem;
+}
+
+.listing-card:hover {
+  transform: translateY(-8px);
+}
+
+.listing-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+}
+
+.favourite-btn:focus,
+.favourite-btn:hover,
+.favourite-btn:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.listing-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.listing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.8)
+  );
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.listing-card:hover .listing-overlay {
+  opacity: 1;
+}
+
+.favourite-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  outline: none;
+  border: none;
+}
+
+.favourite-btn:hover {
+  background-color: rgba(34, 31, 31, 0.8);
+  outline: none;
+  border: none;  
+}
+
+.favourite-btn.active {
+  color: #9b1818;
+  outline: none;
+  border: none;  
+}
+
+.rating-select {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(197, 207, 199);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.listing-info {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listing-info h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.listing-info p {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.user-rating {
+  color: #ffd700;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .listing-card {
+    font-size: 0.9rem;
+  }
+
+  .listing-info {
+    padding: 0.75rem;
+  }
+
+  .favourite-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+}
