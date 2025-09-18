@@ -10,6 +10,7 @@
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
+  color: rgba(202, 191, 191, 0.925);
 }
 
 .navbar-links {
@@ -22,10 +23,28 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
+  color: rgba(202, 191, 191, 0.925);
+}
+
+.nav-home {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  color: rgba(202, 191, 191, 0.925);
+}
+
+.nav-home:hover {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  color: rgba(202, 191, 191, 0.925);
 }
 
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(202, 191, 191, 0.925);
 }
 
 @media (max-width: 768px) {

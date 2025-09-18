@@ -6,6 +6,7 @@ import Favourites from './pages/Favourites';
 import NavBar from './components/NavBar';
 import "./css/App.css"
 import { ListingProvider } from './contexts/ListingContext';
+import LoginSignup from './pages/LoginSignup';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<Favourites/>}/>
+          <Route path="/login-signup" element={<LoginSignup/>}/>
         </Routes>
       </main>
     </ListingProvider>
