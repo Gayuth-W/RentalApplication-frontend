@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import "./css/App.css"
 import { ListingProvider } from './contexts/ListingContext';
 import LoginSignup from './pages/LoginSignup';
+import Other from './pages/Other';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<Favourites/>}/>
           <Route path="/login-signup" element={<LoginSignup/>}/>
+          <Route path="/other" element={<Other/>}/>
         </Routes>
       </main>
     </ListingProvider>

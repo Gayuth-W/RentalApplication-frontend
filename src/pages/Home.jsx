@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import ListingCard from "../components/ListingCard";
-import { useState , useEffect} from "react";
-import "../css/Home.css"
-import { getRentingRates, searchRates } from "../services/api";
+import "../css/Home.css";
+import axios from "axios";
 
 function Home(){
 
@@ -11,70 +11,49 @@ function Home(){
   const [loading, setLoading]=useState(true);
 
   useEffect(() => {
-    const getPopularRentingRates = async () => {
-      try{
-        const popularRates = await getRentingRates();
-        setListings(popularRates)
-      } catch(err){
-        console.log(err)
-        setError("Failed to load the rates...")
+    const fetchListings = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/get-listings");
+        setListings(response.data);  // store response in state
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load listings");
+      } finally {
+        setLoading(false);
       }
-      finally{
-        setLoading(false)
-      }
-    }
+    };
 
-      getPopularRentingRates();
-  }, [])
+    fetchListings();
+  }, []);
 
   const handleSearch= async (e) =>{
     e.preventDefault();
     if(!searchQuery.trim()) return
-    if(loading) return
-
-    setLoading(true);
-    try{
-      const searchResults = await searchRates(searchQuery)
-      setListings(searchResults)
-      setError(null)
-    } catch (err){
-      console.log(err)
-      setError("Failed to search listings...")
-    } finally {
-      setLoading(false)
-    }
-
-    setSearchQuery("");
   };
+
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
+
   return(
     <>
-      <div className="home">
-        <form onSubmit={handleSearch} className="search-form">
-          <input type="text"
-          placeholder="search for listings..."
-          className="search-input"
-          value={searchQuery}
-          onChange={(e) =>{ setSearchQuery(e.target.value)}}
-          ></input>
-          <button type="submit" className="search-button">Search</button>
-        </form>
-
-        {error && <div className="error-message">{error}</div>}
-
-        {loading ?(
-          <div className="loading">Loading...</div>
-        ) : (
+      <form onSubmit={handleSearch} className="search-form">
+        <input type="text"
+        placeholder="search for listings..."
+        className="search-input"
+        value={searchQuery}
+        onChange={(e) =>{ setSearchQuery(e.target.value)}}
+        ></input>
+        <button type="submit" className="search-button">Search</button>
+      </form>
+    
+      <div className="Home">
         <div className="listing-grid">
           {listing.map((listing) => (
-            listing.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-            <ListingCard listing={listing} key={listing.id}/>
+          listing.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          <ListingCard listing={listing} key={listing.id}/>
           ))}
-        </div>          
-        )}
-
-
-        
-      </div>
+        </div>
+      </div>    
     </>
   );
 }
