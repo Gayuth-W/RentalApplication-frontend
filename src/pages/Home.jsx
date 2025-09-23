@@ -13,7 +13,7 @@ function Home(){
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/get-listings");
+        const response = await axios.get("http://localhost:8080/api/home");
         setListings(response.data);  // store response in state
       } catch (err) {
         console.error(err);

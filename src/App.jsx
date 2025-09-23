@@ -8,6 +8,7 @@ import "./css/App.css"
 import { ListingProvider } from './contexts/ListingContext';
 import LoginSignup from './pages/LoginSignup';
 import Other from './pages/Other';
+import ListingDetail from './pages/ListingDetail';
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
       <NavBar/>
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/about" element={<Favourites/>}/>
           <Route path="/login-signup" element={<LoginSignup/>}/>
           <Route path="/other" element={<Other/>}/>
+          <Route path="/listing/:id" element={<ListingDetail />} />
         </Routes>
       </main>
     </ListingProvider>
