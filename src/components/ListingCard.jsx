@@ -25,7 +25,7 @@ function ListingCard({listing}){
     <>
       <div className="listing-card" onClick={goToDetail}>
         <div className="listing-poster">
-          <img src= {`https://image.tmdb.org/t/p/w500${listing.poster_path}`} alt={listing.title}></img>
+          <img src={listing.imageUrls && listing.imageUrls.length > 0 ? listing.imageUrls[0] : "fallback-image-url.jpg"} alt={listing.title}/>
           <div className="listing-overlay">
             <button className={`favourite-btn ${favourite ? "active" : ""}`} onClick={onFavouriteClick}>
               O

@@ -1,0 +1,12 @@
+.listing-images {
+  display: flex;
+  gap: 10px;          /* spacing between images */
+  overflow-x: auto;   /* horizontal scroll if images overflow */
+  padding: 10px 0;
+}
+
+.listing-images img {
+  max-height: 200px;  /* limit image height */
+  border-radius: 8px;
+  object-fit: cover;
+}
