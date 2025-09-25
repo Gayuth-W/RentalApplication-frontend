@@ -1,8 +1,48 @@
+import axios from "axios";
 import "../css/LoginSignup.css"
 import { useState } from "react";
 
 function LoginSignup(){
   const [action, setAction]=useState("Login");
+
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");  
+
+  const handleSignup = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/auth/signup", {
+        fname,
+        lname,
+        phone,
+        email,
+        password
+      });
+      console.log("Signup success:", response.data);
+      alert("Signup successful!");
+      setAction("Login");
+    } catch (err) {
+      console.error("Signup failed:", err);
+      alert("Signup failed!");
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/auth/login", {
+        email,
+        password,
+      });
+      alert("Login successful!");
+      console.log("Login success:", response.data);
+    } catch (error) {
+      alert("login falied!");
+      console.error("Login failed:", error.response?.data || error.message);
+    }
+  }; 
+
   return(
     <div className="container">
       <div className="header">
@@ -16,31 +56,55 @@ function LoginSignup(){
         ?
           <>
             <div className="input">
-              <input type="text" placeholder="first name"></input>
+              <input type="text" placeholder="first name" value={fname} onChange={(e) => setFname(e.target.value)}></input>
             </div>
             <div className="input">
-              <input type="text" placeholder="last name"></input>
+              <input type="text" placeholder="last name" value={lname} onChange={(e) => setLname(e.target.value)}></input>
             </div>
             <div className="input">
-              <input type="text" placeholder="phone"></input>
+              <input type="text" placeholder="phone" value={phone} onChange={(e) => setPhone(e.target.value)}></input>
             </div>
           </>
         :
         null     
         }              
         <div className="input">
-          <input type="email" placeholder="email"></input>
+          <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
         </div>
         <div className="input">
-          <input type="password" placeholder="password"></input>
+          <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
         </div>
       </div>
 
       {action==="Login"?<div className="forgot-password">Forgot Password? <span>click here!</span></div>:null}
+       
       
+        {action === "Login" ? (
+          <div className="switch-container">
+            <div
+              className={action === "Signup" ? "switch active" : "switch"}
+              onClick={() => setAction("Signup")}
+            >
+              Sign up
+            </div>
+          </div>
+        ) : (
+          <div className="switch-container">
+            <div
+              className={action === "Login" ? "switch active" : "switch"}
+              onClick={() => setAction("Login")}
+            >
+              Login
+            </div>
+          </div>
+        )}        
+
       <div className="submit-container">
-        <div className={action==="Signup"?"submit gray":"submit"} onClick={() => {setAction("Signup")}}>Sign up</div>
-        <div className={action==="Login"?"submit gray":"submit"} onClick={() => {setAction("Login")}}>Login</div>
+        {action === "Signup" ? (
+          <div className="submit" onClick={handleSignup}>Sign up</div>
+        ) : (
+          <div className="submit" onClick={handleLogin}>Login</div>
+        )}
       </div>
     </div>
   );
