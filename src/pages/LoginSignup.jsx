@@ -1,10 +1,12 @@
 import axios from "axios";
 import "../css/LoginSignup.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function LoginSignup(){
-  const [action, setAction]=useState("Login");
+function LoginSignup() {
+  const navigate = useNavigate();
 
+  const [action, setAction] = useState("Login");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [phone, setPhone] = useState("");
@@ -35,13 +37,21 @@ function LoginSignup(){
         email,
         password,
       });
+
       alert("Login successful!");
       console.log("Login success:", response.data);
+
+      localStorage.setItem('userId', response.data.sellerId);
+      localStorage.setItem('token', response.data.token);
+
+      navigate(`/seller/${response.data.sellerId}`);
     } catch (error) {
-      alert("login falied!");
+      alert("Login failed!");
       console.error("Login failed:", error.response?.data || error.message);
     }
   }; 
+
+
 
   return(
     <div className="container">

@@ -9,6 +9,7 @@ import { ListingProvider } from './contexts/ListingContext';
 import LoginSignup from './pages/LoginSignup';
 import Other from './pages/Other';
 import ListingDetail from './pages/ListingDetail';
+import Seller from './pages/Seller';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login-signup" element={<LoginSignup/>}/>
           <Route path="/other" element={<Other/>}/>
           <Route path="/listing/:id" element={<ListingDetail />} />
+          <Route path="/seller/:id" element={<Seller/>} />
         </Routes>
       </main>
     </ListingProvider>
