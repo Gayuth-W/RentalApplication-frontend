@@ -10,6 +10,8 @@ import LoginSignup from './pages/LoginSignup';
 import Other from './pages/Other';
 import ListingDetail from './pages/ListingDetail';
 import Seller from './pages/Seller';
+import Counter from './pages/test';
+import SellerListing from './pages/SellerListing';
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/other" element={<Other/>}/>
           <Route path="/listing/:id" element={<ListingDetail />} />
           <Route path="/seller/:id" element={<Seller/>} />
+          <Route path="/test" element={<Counter/>} />
+          <Route path="/seller-listing" element={<SellerListing/>} />
         </Routes>
       </main>
     </ListingProvider>

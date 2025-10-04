@@ -52,9 +52,11 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/listings', {
+      console.log(sellerId);
+      console.log('Token:', token);
+      await axios.post('http://localhost:8080/api/post-listing', {
         ...newListing,
-        seller: { id: sellerId }
+        seller: { id: Number(sellerId) }
       }, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -69,6 +71,7 @@ useEffect(() => {
         bathrooms: '',
         guests: '',
         propertyType: 'SINGLE',
+        seller: { id: Number(sellerId) }
       });
       // Refresh the listings
       const response = await axios.get(
@@ -85,15 +88,6 @@ useEffect(() => {
   return (
     <div>
       <h1>Seller Page</h1>
-
-      <h2>Your Listings</h2>
-      <ul>
-        <div className="listing-grid">
-          {listings.map((listing) => (
-            <ListingCard listing={listing} key={listing.id}/>
-          ))}   
-        </div>     
-      </ul>
 
       <h2>Add New Listing</h2>
       <form onSubmit={handleSubmit}>
