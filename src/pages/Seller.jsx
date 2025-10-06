@@ -1,7 +1,7 @@
 // SellerPage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ListingCard from '../components/ListingCard';
+import { Link } from "react-router-dom";
 
 const Seller = () => {
   const [listings, setListings] = useState([]);
@@ -22,7 +22,6 @@ const Seller = () => {
 
   // Fetch listings for this seller
 useEffect(() => {
-  console.log('sellerId:', sellerId, 'token:', token);
   if (!sellerId || !token) return; // Don't fetch if not logged in
 
   const fetchListings = async () => {
@@ -32,7 +31,6 @@ useEffect(() => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setListings(response.data);
-        console.log("dfdff"+response)
     } 
     catch (err) {
       console.error(err);
@@ -52,11 +50,9 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(sellerId);
-      console.log('Token:', token);
       await axios.post('http://localhost:8080/api/post-listing', {
         ...newListing,
-        seller: { id: Number(sellerId) }
+        sellerId: Number(sellerId)
       }, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -70,8 +66,8 @@ useEffect(() => {
         bedrooms: '',
         bathrooms: '',
         guests: '',
-        propertyType: 'SINGLE',
-        seller: { id: Number(sellerId) }
+        propertyType: '',
+        sellerId: Number(sellerId)
       });
       // Refresh the listings
       const response = await axios.get(
@@ -101,11 +97,12 @@ useEffect(() => {
         <input type="number" name="guests" value={newListing.guests} onChange={handleChange} placeholder="Guests" required />
         <select name="propertyType" value={newListing.propertyType} onChange={handleChange}>
           <option value="SINGLE">SINGLE</option>
-          <option value="DUPLEX">DUPLEX</option>
-          <option value="APARTMENT">APARTMENT</option>
+          <option value="SHARING">SHARING</option>\
         </select>
         <button type="submit">Add Listing</button>
       </form>
+      <button className="seller-listing-btn" type=''></button>
+      <Link to="/seller-listing" className="seller-listing-link">Your Listins</Link>
     </div>
   );
 };

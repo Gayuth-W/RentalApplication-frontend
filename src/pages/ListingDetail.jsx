@@ -10,7 +10,6 @@ function ListingDetail() {
   useEffect(() => {
     const fetchListing = async () => {
       const response = await axios.get(`http://localhost:8080/api/listing/${id}`);
-      console.log("Listing fetched from backend:", response.data);
       setListing(response.data);
     };
     fetchListing();

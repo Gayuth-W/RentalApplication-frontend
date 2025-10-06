@@ -1,11 +1,15 @@
+import axios from 'axios';
+import {useEffect, useState} from 'react';
+import ListingCard from '../components/ListingCard';
 
 const SellerListing = () => {
+  const [listings, setListings]=useState([]);
+
   const sellerId = localStorage.getItem('userId');
   const token = localStorage.getItem('token');
 
     // Fetch listings for this seller
   useEffect(() => {
-    console.log('sellerId:', sellerId, 'token:', token);
     if (!sellerId || !token) return; // Don't fetch if not logged in
 
     const fetchListings = async () => {
@@ -15,7 +19,6 @@ const SellerListing = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setListings(response.data);
-          console.log("dfdff"+response)
       } 
       catch (err) {
         console.error(err);
