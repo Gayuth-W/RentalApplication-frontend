@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
 import "../css/NavBar.css";
 import LogoutButton from "./LogoutButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function NavBar(){
 
   const sellerId = localStorage.getItem('userId');
-  const token = localStorage.getItem('token');
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);  
 
   return(
     <>
@@ -19,8 +26,8 @@ function NavBar(){
         <div className="navbar-links">
           <Link to="/home" className="nav-link">Home </Link>
           <Link to="/about" className="nav-link"> About</Link>
-          {!token && (<Link to="/login-signup" className="nav-link" onLogin={() => setIsLoggedIn(true)}> Login</Link>)}
-          {token && (<>
+          {!isLoggedIn && (<Link to="/login-signup" className="nav-link"> Login</Link>)}
+          {isLoggedIn && (<>
                         <Link to={`/seller/${sellerId}`} className="nav-link">Account</Link>
                         <LogoutButton onLogout={() => setIsLoggedIn(false)}/>
                       </>)}

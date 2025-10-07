@@ -43,6 +43,7 @@ function LoginSignup() {
 
       localStorage.setItem('userId', response.data.sellerId);
       localStorage.setItem('token', response.data.token);
+      window.dispatchEvent(new Event('storage'));
 
       navigate(`/seller/${response.data.sellerId}`);
     } catch (error) {

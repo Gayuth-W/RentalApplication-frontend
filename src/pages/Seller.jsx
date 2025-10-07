@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import "../css/Seller.css"
 
 const Seller = () => {
   const [listings, setListings] = useState([]);
@@ -86,7 +87,7 @@ useEffect(() => {
       <h1>Seller Page</h1>
 
       <h2>Add New Listing</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input name="title" value={newListing.title} onChange={handleChange} placeholder="Title" required />
         <input name="location" value={newListing.location} onChange={handleChange} placeholder="Location" required />
         <input name="address" value={newListing.address} onChange={handleChange} placeholder="Address" required />
@@ -99,10 +100,9 @@ useEffect(() => {
           <option value="SINGLE">SINGLE</option>
           <option value="SHARING">SHARING</option>\
         </select>
-        <button type="submit">Add Listing</button>
+        <button type="submit" className='seller-listing-btn'>Add Listing</button>
       </form>
-      <button className="seller-listing-btn" type=''></button>
-      <Link to="/seller-listing" className="seller-listing-link">Your Listins</Link>
+      <Link to="/seller-listing" className="seller-listing-link">Your Listings</Link>
     </div>
   );
 };
