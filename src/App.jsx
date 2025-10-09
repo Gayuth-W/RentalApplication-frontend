@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import './css/App.css';
 import Home from './pages/Home';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Favourites from './pages/Favourites';
 import NavBar from './components/NavBar';
 import "./css/App.css"
@@ -12,15 +11,19 @@ import ListingDetail from './pages/ListingDetail';
 import Seller from './pages/Seller';
 import Counter from './pages/test';
 import SellerListing from './pages/SellerListing';
+import Welcome from './pages/Welcome';
 
 
 function App() {
+  const location = useLocation();
+  const hideNav = location.pathname === '/';
   return (
     <>
     <ListingProvider>
-      <NavBar/>
+      {!hideNav && <NavBar />}
       <main className="main-content">
         <Routes>
+          <Route path="/" element={<Welcome/>} />
           <Route path="/home" element={<Home/>}/>
           <Route path="/about" element={<Favourites/>}/>
           <Route path="/login-signup" element={<LoginSignup/>}/>
