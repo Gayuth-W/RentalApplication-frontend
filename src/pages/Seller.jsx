@@ -6,6 +6,7 @@ import "../css/Seller.css"
 
 const Seller = () => {
   const [listings, setListings] = useState([]);
+  const [sellerName, setSellerName] = useState("");
   const [newListing, setNewListing] = useState({
     title: '',
     location: '',
@@ -40,7 +41,25 @@ useEffect(() => {
   fetchListings();
 }, [sellerId, token]);
 
+useEffect(() => {
+  if (!sellerId || !token) return;
+  console.log(token);
+  const fetchSeller = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/get-seller/${sellerId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("nanme "+response.data.fname)
+      setSellerName(response.data.fname +" "+ response.data.lname || "Seller");
+    } catch (err) {
+      console.error("Error fetching seller name:", err);
+      setSellerName("Seller sd");
+    }
+  };
 
+  fetchSeller();
+}, [sellerId, token]);
 
   // Handle new listing form changes
   const handleChange = (e) => {
@@ -84,7 +103,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h1>Seller Page</h1>
+      <h1>Welcome Back {sellerName}!</h1>
 
       <h2>Add New Listing</h2>
       <form onSubmit={handleSubmit} className="form">
