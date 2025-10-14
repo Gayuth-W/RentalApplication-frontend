@@ -77,6 +77,7 @@
 .seller-listing-btn:hover,
 .seller-listing-link:hover {
   background-color: #444;
+  color: #fffafa
 }
 
 /* Responsive adjustments */
@@ -104,4 +105,28 @@
 .seller-listing-btn:hover,
 .seller-listing-link:hover {
   background-color: #444;
+}
+
+
+.seller-details {
+  max-width: 400px;      /* width of the card */
+  margin: 20px auto;     /* center horizontally */
+  padding: 20px;         /* inner spacing */
+  background-color: #ebebeb; /* light gray background */
+  border-radius: 10px;       /* rounded corners */
+  box-shadow: 0 4px 8px rgba(190, 106, 106, 0.1); /* soft shadow */
+  font-family: Arial, sans-serif;
+}
+
+.seller-details h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.seller-details p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 1rem;
 }

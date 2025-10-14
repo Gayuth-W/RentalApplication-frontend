@@ -12,6 +12,7 @@ import Seller from './pages/Seller';
 import Counter from './pages/test';
 import SellerListing from './pages/SellerListing';
 import Welcome from './pages/Welcome';
+import FormSubmit from './components/FormSubmit';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/seller/:id" element={<Seller/>} />
           <Route path="/test" element={<Counter/>} />
           <Route path="/seller-listing" element={<SellerListing/>} />
+          <Route path="/add-Listing" element={<FormSubmit/>} />
         </Routes>
       </main>
     </ListingProvider>
