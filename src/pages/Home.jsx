@@ -26,9 +26,17 @@ function Home(){
     fetchListings();
   }, []);
 
-  const handleSearch= async (e) =>{
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if(!searchQuery.trim()) return
+    if (!searchQuery.trim()) return;
+
+    try {
+      const response = await axios.get(`http://localhost:8080/api/home?search=${searchQuery}`);
+      setListings(response.data);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to perform search");
+    }
   };
 
   if (loading) return <div className="loading">Loading...</div>;
