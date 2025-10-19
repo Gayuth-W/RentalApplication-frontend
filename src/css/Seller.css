@@ -1,132 +1,120 @@
-/* Container and form styling */
-.form {
-  max-width: 600px;
-  margin: 2rem auto;
+.seller-dashboard {
+  max-width: 1000px;
+  margin: 3rem auto;
   padding: 2rem;
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  color: #ccc;
-  box-sizing: border-box;
+  background-color: #0d0d0d;
+  border-radius: 12px;
+  color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Input and textarea fields */
-.form input,
-.form textarea,
-.form select {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background-color: #222;
+.seller-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.seller-title {
+  font-size: 2.2rem;
+  font-weight: 700;
   color: #fff;
-  font-size: 1rem;
-  box-sizing: border-box;
+  margin-bottom: 0.5rem;
 }
 
-.form input:focus,
-.form textarea:focus,
-.form select:focus {
-  outline: none;
-  border-color: #e50914;
-  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
+.seller-subtitle {
+  color: #bbb;
+  font-size: 1.1rem;
 }
 
-/* Textarea specific */
-.form textarea {
-  resize: vertical;
-  min-height: 80px;
+/* Action buttons */
+.seller-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
 }
 
-/* Submit button */
-.form button[type="submit"] {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
+.seller-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.seller-btn.primary {
   background-color: #e50914;
   color: #fff;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  box-shadow: 0 4px 10px rgba(229, 9, 20, 0.25);
 }
 
-.form button[type="submit"]:hover {
+.seller-btn.primary:hover {
   background-color: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(229, 9, 20, 0.4);
 }
 
-/* Seller listing link/button */
-.seller-listing-btn,
-.seller-listing-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #333;
+.seller-btn.secondary {
+  background-color: #1a1a1a;
   color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
+  border: 1px solid #333;
+}
+
+.seller-btn.secondary:hover {
+  background-color: #2a2a2a;
+  transform: translateY(-2px);
+  border-color: #e50914;
+}
+
+/* Summary section */
+.seller-summary-section {
   text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  background-color: #141414;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(229, 9, 20, 0.15);
 }
 
-.seller-listing-btn:hover,
-.seller-listing-link:hover {
-  background-color: #444;
-  color: #fffafa
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .form {
-    padding: 1rem;
-  }
-}
-
-.seller-listing-btn,
-.seller-listing-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.seller-listing-btn:hover,
-.seller-listing-link:hover {
-  background-color: #444;
-}
-
-
-.seller-details {
-  max-width: 400px;      /* width of the card */
-  margin: 20px auto;     /* center horizontally */
-  padding: 20px;         /* inner spacing */
-  background-color: #ebebeb; /* light gray background */
-  border-radius: 10px;       /* rounded corners */
-  box-shadow: 0 4px 8px rgba(190, 106, 106, 0.1); /* soft shadow */
-  font-family: Arial, sans-serif;
-}
-
-.seller-details h2 {
-  margin-bottom: 15px;
-  color: #333;
+.summary-heading {
   font-size: 1.5rem;
-  text-align: center;
+  color: #e50914;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
-.seller-details p {
-  margin: 8px 0;
-  color: #555;
-  font-size: 1rem;
+.summary-wrapper {
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .seller-dashboard {
+    padding: 1.2rem;
+  }
+
+  .seller-title {
+    font-size: 1.7rem;
+  }
+
+  .seller-btn {
+    width: 100%;
+  }
 }
