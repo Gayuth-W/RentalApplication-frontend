@@ -1,0 +1,123 @@
+/* Floating chat button */
+.chatbot-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #e50914; /* red button theme */
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chatbot-button:hover {
+  background-color: #f40612;
+}
+
+/* Chat window */
+.chatbot-window {
+  position: fixed;
+  bottom: 6rem;
+  right: 1rem;
+  width: 320px;
+  max-width: 90vw;
+  background-color: #333; /* dark background to match home */
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Header */
+.chatbot-header {
+  background-color: #e50914;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Messages area */
+.chatbot-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 250px;
+  background-color: #1a1a1a; /* dark chat area */
+}
+
+/* Individual message bubbles */
+.chatbot-message {
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chatbot-message.user {
+  background-color: #e50914;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.chatbot-message.bot {
+  background-color: #555;
+  color: white;
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Input area */
+.chatbot-input-area {
+  display: flex;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #444;
+  gap: 0.5rem;
+}
+
+.chatbot-input-area input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  outline: none;
+  background-color: #222;
+  color: white;
+}
+
+.chatbot-input-area input::placeholder {
+  color: #aaa;
+}
+
+.chatbot-input-area input:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229,9,20,0.2);
+}
+
+.chatbot-input-area button {
+  background-color: #e50914;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chatbot-input-area button:hover {
+  background-color: #f40612;
+}

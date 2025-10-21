@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ListingCard from "../components/ListingCard";
 import "../css/Home.css";
 import axios from "axios";
+import ChatBotWrapper from "../components/ChatBot";
 
 function Home(){
 
@@ -31,7 +32,7 @@ function Home(){
     if (!searchQuery.trim()) return;
 
     try {
-      const response = await axios.get(`http://localhost:8080/api/home?search=${searchQuery}`);
+      const response = await axios.get(`http://localhost:8080/api/listings?search=${searchQuery}`);
       setListings(response.data);
     } catch (err) {
       console.error(err);
@@ -61,6 +62,7 @@ function Home(){
           <ListingCard listing={listing} key={listing.id}/>
           ))}
         </div>
+        <ChatBotWrapper/>
       </div>    
     </>
   );
