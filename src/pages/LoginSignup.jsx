@@ -27,7 +27,9 @@ function LoginSignup() {
       setAction("Login");
     } catch (err) {
       console.error("Signup failed:", err);
-      alert("Signup failed!");
+    }finally{
+      localStorage.setItem("email", email);
+      navigate('/verify');      
     }
   };
 

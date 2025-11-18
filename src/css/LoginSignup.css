@@ -108,3 +108,11 @@
   background: #4a90e2;
   color: white;
 }
+
+p {
+  margin-bottom: 20px;
+}
+
+.verify-container {
+  margin-top: 20px;
+}
