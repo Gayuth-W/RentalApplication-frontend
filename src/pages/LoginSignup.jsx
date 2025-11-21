@@ -89,7 +89,7 @@ function LoginSignup() {
         </div>
       </div>
 
-      {action==="Login"?<div className="forgot-password">Forgot Password? <span>click here!</span></div>:null}
+      {action==="Login"?<div className="forgot-password">Forgot Password? <span onClick={() => navigate("/forget-password")}>click here!</span></div>:null}
        
       
         {action === "Login" ? (

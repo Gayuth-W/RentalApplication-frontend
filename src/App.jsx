@@ -14,6 +14,7 @@ import SellerListing from './pages/SellerListing';
 import Welcome from './pages/Welcome';
 import FormSubmit from './components/FormSubmit';
 import Verify from './pages/verify';
+import ForgetPassword from './pages/ForgetPassword';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/seller-listing" element={<SellerListing/>} />
           <Route path="/add-Listing" element={<FormSubmit/>} />
           <Route path="/verify" element={<Verify/>} />
+          <Route path="/forget-password" element={<ForgetPassword/>}/>
         </Routes>
       </main>
     </ListingProvider>
