@@ -27,8 +27,14 @@ function ListingCard({listing}){
         <div className="listing-poster">
           <img src={listing.imageUrls && listing.imageUrls.length > 0 ? listing.imageUrls[0] : "fallback-image-url.jpg"} alt={listing.title}/>
           <div className="listing-overlay">
-            <button className={`favourite-btn ${favourite ? "active" : ""}`} onClick={onFavouriteClick}>
-              O
+            <button
+              className={`favourite-btn ${favourite ? "active" : ""}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                onFavouriteClick(e);
+              }}
+            >
+              {"<3"}
             </button>
           </div>
         </div>
