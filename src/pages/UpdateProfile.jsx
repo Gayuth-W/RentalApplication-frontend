@@ -19,15 +19,34 @@ function UpdateProfile(){
   } else {
     setAuthorized(true);
   }
+  const loadUserDetails=async()=>{
+    try{
+      const response =await axios.get(`http://localhost:8080/api/get-seller/${localStorage.getItem('userId')}`,
+      {
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      setFname(response.data.fname);
+      setLname(response.data.lname);
+      setPhone(response.data.phone);
+      setEmail(response.data.email); 
+    }catch(err){
+      console.log(err)
+    }  
+  }
+  loadUserDetails();
   }, [])  
 
-  if (!authorized == true)
+  if (authorized === null)
     return null;
 
   const handleUpdateUser=async ()=>{
+
     try{
       await axios.put(`http://localhost:8080/api/update-seller/${localStorage.getItem('userId')}`, {
         password,
+        fname,
         lname,
         phone,
         email,
@@ -38,6 +57,7 @@ function UpdateProfile(){
       navigate(`/seller/${localStorage.getItem('userId')}`)
     }catch(err){
       console.log(err)
+      alert("error!")
     }
   }
   return(
@@ -59,10 +79,10 @@ function UpdateProfile(){
           <input type="text" placeholder='Phone Number' value={phone} onChange={(e)=>{setPhone(e.target.value)}}></input>
         </div>
         <div className='input'>
-          <input type="text" placeholder='Email' value={email} onChange={(e)=>{setEmail(e.target.value)}}></input>
+          <input type="text" placeholder='Email' value={email} onChange={(e)=>{setEmail(e.target.value.email)}}></input>
         </div>
         <div className='input'>
-          <input type="text" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
+          <input type="password" placeholder='Password' value={password} onChange={(e)=>{if(e.target.value!=null) setPassword(e.target.value)}}></input>
         </div>
       </div>
 
