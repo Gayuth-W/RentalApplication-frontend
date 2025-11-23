@@ -43,6 +43,11 @@ function UpdateProfile(){
 
   const handleUpdateUser=async ()=>{
 
+    if (!fname || !lname || !phone || !email || !password) {
+      alert("All fields are required!");
+      return;
+    }
+
     try{
       await axios.put(`http://localhost:8080/api/update-seller/${localStorage.getItem('userId')}`, {
         password,
