@@ -9,12 +9,16 @@ const Seller = () => {
   const [listings, setListings] = useState([]);
   const [sellerName, setSellerName] = useState("");
 
+  const navigate = useNavigate();  
+
   const sellerId = localStorage.getItem('userId');
   const token = localStorage.getItem('token');
 
-  // Fetch listings for this seller
 useEffect(() => {
-  if (!sellerId || !token) return; // Don't fetch if not logged in
+  if (!sellerId || !token){
+    navigate("/login-signup");
+    return;
+  }
 
   const fetchListings = async () => {
     try {
@@ -74,6 +78,10 @@ useEffect(() => {
           <Summary />
         </div>
       </section>
+
+      <div>
+        <span style={{ color: "gray", cursor: "pointer", textDecoration: "underline" }} onClick={()=>{navigate(`/update-profile/${localStorage.getItem('userId')}`)}}>click</span> here to edit your profile
+      </div>
     </div>
   );
 }

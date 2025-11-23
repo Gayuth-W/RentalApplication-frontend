@@ -15,6 +15,7 @@ import Welcome from './pages/Welcome';
 import FormSubmit from './components/FormSubmit';
 import Verify from './pages/verify';
 import ForgetPassword from './pages/ForgetPassword';
+import UpdateProfile from './pages/UpdateProfile';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/add-Listing" element={<FormSubmit/>} />
           <Route path="/verify" element={<Verify/>} />
           <Route path="/forget-password" element={<ForgetPassword/>}/>
+          <Route path="/update-profile/:id" element={<UpdateProfile/>}/>
         </Routes>
       </main>
     </ListingProvider>

@@ -78,6 +78,7 @@
   cursor: pointer;
   border-radius: 4px;
   text-align: left;
+  margin-top: -15px;
 }
 
 .switch.active {
@@ -115,4 +116,13 @@ p {
 
 .verify-container {
   margin-top: 20px;
+}
+
+.switch-container {
+  padding: 8px 16px;
+  padding-left: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: left;
+  margin-top: -43px;
 }

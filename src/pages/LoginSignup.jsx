@@ -1,6 +1,6 @@
 import axios from "axios";
 import "../css/LoginSignup.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginSignup() {
@@ -11,7 +11,8 @@ function LoginSignup() {
   const [lname, setLname] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");  
+  const [password, setPassword] = useState(""); 
+
 
   const handleSignup = async () => {
     try {
@@ -20,7 +21,8 @@ function LoginSignup() {
         lname,
         phone,
         email,
-        password
+        password,
+        headers: { Authorization: `Bearer ${token}` }
       });
       console.log("Signup success:", response.data);
       alert("Signup successful!");
@@ -102,7 +104,7 @@ function LoginSignup() {
             </div>
           </div>
         ) : (
-          <div className="switch-container">
+          <div className="switch">
             <div
               className={action === "Login" ? "switch active" : "switch"}
               onClick={() => setAction("Login")}
