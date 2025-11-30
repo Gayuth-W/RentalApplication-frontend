@@ -79,9 +79,6 @@ useEffect(() => {
         </div>
       </section>
 
-      <div>
-        <span style={{ color: "gray", cursor: "pointer", textDecoration: "underline" }} onClick={()=>{navigate(`/update-profile/${localStorage.getItem('userId')}`)}}>click</span> here to edit your profile
-      </div>
     </div>
   );
 }

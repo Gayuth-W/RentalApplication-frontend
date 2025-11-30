@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(163, 11, 11, 0.1);
+  height: 70px
 }
 
 .navbar-brand {

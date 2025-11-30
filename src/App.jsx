@@ -16,15 +16,20 @@ import FormSubmit from './components/FormSubmit';
 import Verify from './pages/verify';
 import ForgetPassword from './pages/ForgetPassword';
 import UpdateProfile from './pages/UpdateProfile';
+import SideComponent from './components/SideComponent';
 
 
 function App() {
   const location = useLocation();
   const hideNav = location.pathname === '/';
+  const showSide =
+    location.pathname.startsWith(`/seller/`) ||
+    location.pathname.startsWith(`/update-profile/`);  
   return (
     <>
     <ListingProvider>
       {!hideNav && <NavBar />}
+      {showSide && <SideComponent />}
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Welcome/>} />
@@ -39,6 +44,7 @@ function App() {
           <Route path="/add-Listing" element={<FormSubmit/>} />
           <Route path="/verify" element={<Verify/>} />
           <Route path="/forget-password" element={<ForgetPassword/>}/>
+          {/* { <SideComponent/>} */}
           <Route path="/update-profile/:id" element={<UpdateProfile/>}/>
         </Routes>
       </main>
