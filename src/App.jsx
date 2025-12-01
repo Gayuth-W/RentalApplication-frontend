@@ -24,7 +24,7 @@ function App() {
   const hideNav = location.pathname === '/';
   const showSide =
     location.pathname.startsWith(`/seller/`) ||
-    location.pathname.startsWith(`/update-profile/`);  
+    location.pathname.startsWith(`/update-profile/`) || location.pathname.startsWith(`/add-listing`) || location.pathname.startsWith(`/seller-listing`);  
   return (
     <>
     <ListingProvider>
@@ -44,7 +44,6 @@ function App() {
           <Route path="/add-Listing" element={<FormSubmit/>} />
           <Route path="/verify" element={<Verify/>} />
           <Route path="/forget-password" element={<ForgetPassword/>}/>
-          {/* { <SideComponent/>} */}
           <Route path="/update-profile/:id" element={<UpdateProfile/>}/>
         </Routes>
       </main>

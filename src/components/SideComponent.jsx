@@ -13,10 +13,7 @@ function SideComponent(){
         </div>
         <div className="side-detail">
           <button onClick={()=>{navigate(`update-profile/${localStorage.getItem('userId')}`)}}>Update Profile</button>
-        </div>      
-        <div className="side-detail">
-          <button onClick={()=>{navigate(`update-profile/${localStorage.getItem('userId')}`)}}>Update Profile</button>
-        </div>    
+        </div>        
         <div className="side-detail">
           <button onClick={()=>{navigate(`/add-listing`)}}>Add Listing</button>
         </div>     

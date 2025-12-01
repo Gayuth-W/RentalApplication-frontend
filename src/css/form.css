@@ -1,0 +1,93 @@
+/* Container */
+.form {
+  width: 400px;
+  margin: 50px auto;
+  background: #3d3c3c;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.form::before {
+  content: "Add New Listing";
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #b6b1b1;
+}
+
+/* Underline */
+.form::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #4a90e2;
+  margin: -15px auto 25px;
+  border-radius: 2px;
+}
+
+/* Inputs container (auto) */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* All input fields */
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Focus effect */
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  border-color: #4a90e2;
+}
+
+/* Textarea */
+.form textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+/* Button */
+.seller-listing-btn {
+  background: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s;
+  border: none;
+  margin-top: 5px;
+}
+
+.seller-listing-btn:hover {
+  background: #357ab8;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .form {
+    width: 90%;
+    padding: 25px;
+  }
+}

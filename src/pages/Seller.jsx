@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Seller.css"
-import Summary from '../components/Summary';
 
 const Seller = () => {
   const [listings, setListings] = useState([]);
@@ -57,7 +56,7 @@ useEffect(() => {
   return (
     <div>
       <header className="seller-header">
-        <h1 className="seller-title">Welcome back, {sellerName}! 👋</h1>
+        <h1 className="seller-title">Welcome back, {sellerName}!</h1>
         <p className="seller-subtitle">
           Manage your listings and view your performance all in one place.
         </p>
