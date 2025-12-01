@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/SideComponent.css"
 
 function SideComponent(){
@@ -13,7 +13,16 @@ function SideComponent(){
         </div>
         <div className="side-detail">
           <button onClick={()=>{navigate(`update-profile/${localStorage.getItem('userId')}`)}}>Update Profile</button>
-        </div>        
+        </div>      
+        <div className="side-detail">
+          <button onClick={()=>{navigate(`update-profile/${localStorage.getItem('userId')}`)}}>Update Profile</button>
+        </div>    
+        <div className="side-detail">
+          <button onClick={()=>{navigate(`/add-listing`)}}>Add Listing</button>
+        </div>     
+        <div className="side-detail">
+          <button onClick={()=>{navigate(`/seller-listing`)}}>Show Listing</button>
+        </div>                          
       </div>
     </>
   );

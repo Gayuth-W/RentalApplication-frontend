@@ -55,30 +55,13 @@ useEffect(() => {
 }, [sellerId, token]);
 
   return (
-    <div className="seller-dashboard">
+    <div>
       <header className="seller-header">
         <h1 className="seller-title">Welcome back, {sellerName}! 👋</h1>
         <p className="seller-subtitle">
           Manage your listings and view your performance all in one place.
         </p>
       </header>
-
-      <section className="seller-actions">
-        <Link to="/add-listing" className="seller-btn primary">
-          ➕ Add New Listing
-        </Link>
-        <Link to="/seller-listing" className="seller-btn secondary">
-          📦 Your Listings ({listings.length})
-        </Link>
-      </section>
-
-      <section className="seller-summary-section">
-        <h2 className="summary-heading">📊 Your Performance Summary</h2>
-        <div className="summary-wrapper">
-          <Summary />
-        </div>
-      </section>
-
     </div>
   );
 }
