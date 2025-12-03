@@ -45,10 +45,6 @@
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
 }
 
-/* Make room for full sidebar in main content */
-.main-content {
-  margin-left: 240px;
-}
 
 /* MOBILE VIEW */
 @media (max-width: 768px) {
