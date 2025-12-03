@@ -17,6 +17,7 @@ import Verify from './pages/verify';
 import ForgetPassword from './pages/ForgetPassword';
 import UpdateProfile from './pages/UpdateProfile';
 import SideComponent from './components/SideComponent';
+import DeleteSeller from './pages/DeleteSeller';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/verify" element={<Verify/>} />
           <Route path="/forget-password" element={<ForgetPassword/>}/>
           <Route path="/update-profile/:id" element={<UpdateProfile/>}/>
+          <Route path="/delete-seller" element={<DeleteSeller/>}/>
         </Routes>
       </main>
     </ListingProvider>
